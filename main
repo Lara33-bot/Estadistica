@@ -1,0 +1,29 @@
+import java.util.Scanner;
+
+public class main {
+  public static void main (String[]args) {
+      Scanner input = new Scanner (System.in);
+      boolean rept = true;
+      //   aca van las variables
+      while (rept)
+      {
+      //  Empieza aca
+
+      System.out.println("Seguir con el programa?? si/no");
+      String resp = input.nextLine().trim(). toLowerCase();
+          if (resp.equals("si") || resp.equals("sí"))
+          {
+              rept = true;
+          }
+          else if (resp.equals("no"))
+          {
+              rept = false;
+          }
+          else
+          {
+              System.out.println("Reintentar. Seguir con el programa?");
+          }
+          }
+
+  }
+  }

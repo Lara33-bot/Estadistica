@@ -8,7 +8,118 @@ public class main {
       while (rept)
       {
       //  Empieza aca
+      String ingreso;
+        /*Ingreso y validación de datos a analizar*/
+        do{
+            System.out.println("Ingrese los números separados por ; sin dejar espacios y use . para los decimales");
+            ingreso = input.nextLine();
+            if(!validarCaracteres(ingreso)){ /*Llama al método validarCaracteres*/
+                System.out.println("Entrada inválida, inténtalo de nuevo");
+            }
+        }while(!validarCaracteres(ingreso));/*No termina el bucle hasta que la validación sea positiva*/
+        double[] datos = convertirArray(ingreso);/*El método convertirArray convierte los números ingresados en un array y quedan guardados en esta variable*/
+        /*Selección de cálculos a realizar*/
+        System.out.println("Ingrese las los calculos a realizar separados por ;");
+        System.out.println("1 --> Calcular media\n" +
+                "2 --> Calcular mediana\n" +
+                "3 --> Calcular moda\n" +
+                "4 --> Calcular rango\n" +
+                "5 --> Calcular varianza\n" +
+                "6 --> Calcular desviación estándar\n" +
+                "7 --> Calcular frecuencia absoluta\n" +
+                "8 --> Calcular frecuencia relativa\n" +
+                "9 --> Calcular frecuencia relativa acumulada\n");
+        input = new Scanner(System.in);
 
+        String opcionesIngresadas = input.nextLine();
+        double[] opciones = convertirArray(opcionesIngresadas);
+        for(int i = 0; i<opciones.length; i++){
+            if(opciones[i]==1){
+                /*Ejecutar método correspondiente y mostrar resultado*/
+            }
+            if(opciones[i]==2){
+                /*Ejecutar método correspondiente y mostrar resultado*/
+                double mediana = calcularMediana(datos);
+                System.out.println("La mediana es: "+mediana);
+            }
+            if(opciones[i]==3){
+                /*Ejecutar método correspondiente y mostrar resultado*/
+            }
+            if(opciones[i]==4){
+                /*Ejecutar método correspondiente y mostrar resultado*/
+            }
+            if(opciones[i]==5){
+                /*Ejecutar método correspondiente y mostrar resultado*/
+            }
+            if(opciones[i]==6){
+                /*Ejecutar método correspondiente y mostrar resultado*/
+            }
+            if(opciones[i]==7){
+                /*Ejecutar método correspondiente y mostrar resultado*/
+                HashMap<Double, Integer> frecuenciaAbsoluta = calcularFrecuenciaAbsoluta(datos);
+                System.out.println("Frecuencia absoluta:");
+                for (double clave : frecuenciaAbsoluta.keySet()) {
+                    System.out.println( clave +" ----> " + frecuenciaAbsoluta.get(clave));
+                }
+            }
+            if(opciones[i]==8){
+                /*Ejecutar método correspondiente y mostrar resultado*/
+            }
+            if(opciones[i]==9){
+                /*Ejecutar método correspondiente y mostrar resultado*/
+            }
+        }
+
+    }
+    public static boolean validarCaracteres(String ingreso){
+        for(char c : ingreso.toCharArray()){
+            if(!Character.isDigit(c) && c != '.' && c != ';'){
+                return false;
+            }
+
+        }
+        return true;
+    }
+
+    public static double[] convertirArray(String opcionesIngresadas){
+        String[] opciones = opcionesIngresadas.split(";");
+        double[] numeros = new double[opciones.length];
+        for(int i=0; i<opciones.length; i++){
+            numeros[i]= Double.parseDouble(opciones[i]);
+        }
+        return numeros;
+    }
+    public static double calcularMediana(double[] datos){
+        int n = datos.length;
+        double medianaCalculada;
+        Arrays.sort(datos);
+        if(n % 2 == 1){
+            medianaCalculada = datos[(n-1)/2];
+        }
+        else{
+            double medianaCalculada1 = datos[n/2 - 1];
+            double medianaCalculada2 = datos[n/2];
+            medianaCalculada = (medianaCalculada1+medianaCalculada2)/2;
+        }
+        return medianaCalculada;
+    }
+    public static HashMap<Double, Integer> calcularFrecuenciaAbsoluta(double[] datos){
+
+        HashMap<Double, Integer> frecuencia = new HashMap<>();
+
+        for (double num : datos) {
+            if (frecuencia.containsKey(num)) {
+                int contadorActual = frecuencia.get(num);
+                frecuencia.put(num, contadorActual + 1);
+            } else {
+                frecuencia.put(num, 1);
+            }
+        }
+
+
+
+        return frecuencia;
+    }
 /*Ya me dejó, soy Matías*/ 
 //Bien!! :)
 

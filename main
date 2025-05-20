@@ -6,10 +6,8 @@ public class main {
   public static void main (String[]args) {
       Scanner input = new Scanner (System.in);
       boolean rept = true;
-      //   aca van las variables
       while (rept)
       {
-      //  Empieza aca
       String ingreso;
         /*Ingreso y validación de datos a analizar*/
         do{

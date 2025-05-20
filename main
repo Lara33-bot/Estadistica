@@ -1,6 +1,9 @@
 import java.util.Scanner;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class main {
   public static void main (String[]args) {
@@ -35,6 +38,9 @@ public class main {
 
         String opcionesIngresadas = input.nextLine();
         double[] opciones = convertirArray(opcionesIngresadas);
+        Object[] resultado = calcularFrecuenciaAbsoluta(datos);
+        double[] numerosSinRepetir = (double[]) resultado[0];
+
         for(int i = 0; i<opciones.length; i++){
             if(opciones[i]==1){
                 /*Ejecutar método correspondiente y mostrar resultado*/
@@ -58,11 +64,10 @@ public class main {
         }
 
             if(opciones[i]==7){
-                /*Ejecutar método correspondiente y mostrar resultado*/
-                HashMap<Double, Integer> frecuenciaAbsoluta = calcularFrecuenciaAbsoluta(datos);
+                int[] frecuenciaAbsoluta = (int[]) resultado[1];
                 System.out.println("Frecuencia absoluta:");
-                for (double clave : frecuenciaAbsoluta.keySet()) {
-                    System.out.println( clave +" ----> " + frecuenciaAbsoluta.get(clave));
+                for (int j = 0; j < frecuenciaAbsoluta.length; j++) {
+                    System.out.println(numerosSinRepetir[j] +"  (FrecuenciaAbsoluta)---> "+frecuenciaAbsoluta[j]);
                 }
             }
             if(opciones[i]==8){
@@ -106,7 +111,7 @@ public class main {
         }
         return medianaCalculada;
     }
-    public static HashMap<Double, Integer> calcularFrecuenciaAbsoluta(double[] datos){
+    public static Object[] calcularFrecuenciaAbsoluta(double[] datos){
 
         HashMap<Double, Integer> frecuencia = new HashMap<>();
 
@@ -118,10 +123,18 @@ public class main {
                 frecuencia.put(num, 1);
             }
         }
+        List<Double> clavesOrdenadas = new ArrayList<>(frecuencia.keySet());
+        Collections.sort(clavesOrdenadas);
+        double[] numerosSinRepetir = new double[clavesOrdenadas.size()];
+        // Crear y llenar el array de frecuencias absolutas
+        int[] frecuenciasArray = new int[clavesOrdenadas.size()];
+        for (int i = 0; i < clavesOrdenadas.size(); i++) {
+            numerosSinRepetir[i] = clavesOrdenadas.get(i);
+            frecuenciasArray[i] = frecuencia.get(clavesOrdenadas.get(i));
+        }
 
 
-
-        return frecuencia;
+        return new Object[]{numerosSinRepetir, frecuenciasArray};
     }
 /*Ya me dejó, soy Matías*/ 
 //Bien!! :)

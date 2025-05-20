@@ -58,6 +58,9 @@ public class Main {
             }
             if(opciones[i]==5){
                /*Ejecutar método correspondiente y mostrar resultado*/
+                    double[] varianzas = calcularVarianzas(datos);
+                     System.out.println("Varianza Poblacional: " + varianzas[0]);
+                     System.out.println("Varianza Muestral: " + varianzas[1]);
             }
             if(opciones[i]==6){
                /*Ejecutar método correspondiente y mostrar resultado*/

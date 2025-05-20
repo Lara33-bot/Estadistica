@@ -31,8 +31,8 @@ public class main {
                 "6 --> Calcular desviación estándar\n" +
                 "7 --> Calcular frecuencia absoluta\n" +
                 "8 --> Calcular frecuencia relativa\n" +
-                "9 --> Calcular frecuencia absoluta acumulada\n" +
-                "10 --> Calcular frecuencia relativa acumulada\n" +
+                "9 --> Calcular frecuencia relativa acumulada\n" +
+                "10 --> Calcular frecuencia absoluta acumulada\n" +
                 "11 --> Calcular frecuencia porcentual\n");
         input = new Scanner(System.in);
 

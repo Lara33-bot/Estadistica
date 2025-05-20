@@ -61,7 +61,7 @@ public class main {
                 sumcuadrado = sumcuadrado + (restav * restav);
             }
                double varianza = sumcuadrado / datos.length;
-            if (opciones[i]==5) {
+            if (opciones==5) {
                 System.out.println("Varianza:" + varianza);
             } else if (opciones[i]==6) {
                 double desvest = Math.sqrt(varianza);

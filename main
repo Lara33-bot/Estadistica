@@ -60,12 +60,18 @@ public class main {
                double restav = datos[i] - mediav;
                 sumcuadrado = sumcuadrado + (restav * restav);
             }
-               double varianza = sumcuadrado / datos.length;
+               double varianzapoblacional = sumcuadrado / datos.length;
+              double varianzamuestral = sumcuadrado / (datos.length-1);
+
             if (opciones==5) {
-                System.out.println("Varianza:" + varianza);
-            } else if (opciones[i]==6) {
-                double desvest = Math.sqrt(varianza);
-                System.out.println("Desviación Estándar:" + desvest);
+                System.out.println("Varianza poblacional:" + varianzapoblacional + "Varianza muestral:" + varianzamuestral);
+
+            } else if (opciones==6) {
+                double desvestpob = Math.sqrt(varianzapoblacional);
+                double desvestmus = Math.sqrt(varianzamuestral);
+                //la raiz
+
+                System.out.println("Desviación Estándar poblacional:" + desvestpob + "Desviación Estándar muestral:" + desvestmus);
             }
         }
 

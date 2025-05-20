@@ -21,7 +21,7 @@ public class main {
         }while(!validarCaracteres(ingreso));/*No termina el bucle hasta que la validación sea positiva*/
         double[] datos = convertirArray(ingreso);/*El método convertirArray convierte los números ingresados en un array y quedan guardados en esta variable*/
         /*Selección de cálculos a realizar*/
-        System.out.println("Ingrese las los calculos a realizar separados por ;");
+        System.out.println("Ingrese los calculos a realizar separados por ;");
         System.out.println("1 --> Calcular media\n" +
                 "2 --> Calcular mediana\n" +
                 "3 --> Calcular moda\n" +
@@ -50,12 +50,24 @@ public class main {
             if(opciones[i]==4){
                 /*Ejecutar método correspondiente y mostrar resultado*/
             }
-            if(opciones[i]==5){
-                /*Ejecutar método correspondiente y mostrar resultado*/
+            if(opciones[i]==5 || opciones[i]==6){
+              for (int i = 0; i < datos.length; i++) {
+                 sumv = sumv + datos[i];
+               }
+            double mediav = sumv / datos.length;
+            for (int i = 0; i < datos.length; i++) {
+               double restav = datos[i] - mediav;
+                sumcuadrado = sumcuadrado + (restav * restav);
             }
-            if(opciones[i]==6){
-                /*Ejecutar método correspondiente y mostrar resultado*/
+               double varianza = sumcuadrado / datos.length;
+            if (opciones[i]==5) {
+                System.out.println("Varianza:" + varianza);
+            } else if (opciones[i]==6) {
+                double desvest = Math.sqrt(varianza);
+                System.out.println("Desviación Estándar:" + desvest);
             }
+        }
+
             if(opciones[i]==7){
                 /*Ejecutar método correspondiente y mostrar resultado*/
                 HashMap<Double, Integer> frecuenciaAbsoluta = calcularFrecuenciaAbsoluta(datos);

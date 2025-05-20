@@ -61,7 +61,7 @@ public class main {
             }
             if(opciones[i]==6){
                /*Ejecutar método correspondiente y mostrar resultado*/
-        }
+           }
 
             if(opciones[i]==7){
                 int[] frecuenciaAbsoluta = (int[]) resultado[1];
@@ -77,6 +77,22 @@ public class main {
                 /*Ejecutar método correspondiente y mostrar resultado*/
             }
         }
+
+
+    System.out.println("Seguir con el programa?? sí/no");
+            String resp = input.nextLine().trim(). toLowerCase();
+            if (resp.equals("si") || resp.equals("sí"))
+            {
+                rept = true;
+            }
+            else if (resp.equals("no"))
+            {
+                rept = false;
+            }
+            else
+            {
+                System.out.println("Reintentar. Seguir con el programa?");
+            }
 
     }
     public static boolean validarCaracteres(String ingreso){
@@ -136,27 +152,5 @@ public class main {
 
         return new Object[]{numerosSinRepetir, frecuenciasArray};
     }
-/*Ya me dejó, soy Matías*/ 
-//Bien!! :)
-
-
-
-
-      System.out.println("Seguir con el programa?? si/no");
-      String resp = input.nextLine().trim(). toLowerCase();
-          if (resp.equals("si") || resp.equals("sí"))
-          {
-              rept = true;
-          }
-          else if (resp.equals("no"))
-          {
-              rept = false;
-          }
-          else
-          {
-              System.out.println("Reintentar. Seguir con el programa?");
-          }
-          }
-
   }
   }

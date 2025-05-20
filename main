@@ -6,6 +6,7 @@ public class main {
   public static void main (String[]args) {
       Scanner input = new Scanner (System.in);
       boolean rept = true;
+     double sumv = 0, sumcuadrado = 0;
       //   aca van las variables
       while (rept)
       {

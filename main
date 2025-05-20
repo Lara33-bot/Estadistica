@@ -130,6 +130,23 @@ public class Main {
         }
         return medianaCalculada;
     }
+public static double [] calcularVarianza(double[] datos){
+   double sumv = 0, sumcuadrado = 0;
+
+   for (int i = 0; i < datos.length; i++) {
+       sumv = sumv + datos[i];
+   }
+     double mediav = sumv / datos.length;
+   for (int i = 0; i < datos.length; i++) {
+       double restav = datos[i] - mediav;
+       sumcuadrado = sumcuadrado + (restav * restav);
+   }
+    double varianzapoblacional = sumcuadrado / datos.length;
+    double varianzamuestral = sumcuadrado / (datos.length-1);
+
+    return new double[]{varianzapoblacional, varianzamuestral};
+}
+
     public static Object[] calcularFrecuenciaAbsoluta(double[] datos){
 
         HashMap<Double, Integer> frecuencia = new HashMap<>();

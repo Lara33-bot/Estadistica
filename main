@@ -171,7 +171,31 @@ public class Main {
         }
         return medianaCalculada;
     }
-public static double [] calcularVarianzas(double[] datos){
+    public static double calcularModa(double[] datos) {
+        int maxFrecuencia = 0;
+        double moda = datos[0];
+
+        for (int i = 0; i < datos.length; i++) {
+            int contador = 0;
+            for (int j = 0; j < datos.length; j++) {
+                if (datos[i] == datos[j]) {
+                    contador++;
+                }
+            }
+
+            if (contador > maxFrecuencia) {
+                maxFrecuencia = contador;
+                moda = datos[i];
+            }
+        }
+
+        return moda;
+    }
+    public static double calcularRango(double[] datos) {
+        Arrays.sort(datos); 
+        return datos[datos.length - 1] - datos[0];
+    }
+    public static double [] calcularVarianzas(double[] datos){
    double sumv = 0, sumcuadrado = 0;
 
    for (int i = 0; i < datos.length; i++) {
@@ -221,7 +245,7 @@ public static double[] calcularDesviaciones(double[] datos) {
 
         return new Object[]{numerosSinRepetir, frecuenciasArray};
     }
-  public static void calcularFrecuenciaRelativa(double[] datos, double[] numerosSinRepetir, int[] frecuenciaAbsoluta) {
+    public static void calcularFrecuenciaRelativa(double[] datos, double[] numerosSinRepetir, int[] frecuenciaAbsoluta) {
         int total = datos.length;
 
         System.out.println("Frecuencia relativa:");

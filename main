@@ -86,6 +86,15 @@ public class Main {
             }
             if(opciones[i]==10){
                 /*Ejecutar método correspondiente y mostrar resultado*/
+              if(opciones[i]==10){
+            int[] frecuenciaAbsoluta = (int[]) resultado[1];
+            int[] frecuenciaAcumulada = calcularFrecuenciaAbsolutaAcumulada(frecuenciaAbsoluta);
+           System.out.println("Valor  /  Frecuencia Absoluta  /  Frecuencia Absoluta Acumulada:");
+            for (int j = 0; j < frecuenciaAcumulada.length; j++) {
+            System.out.println(numerosSinRepetir[j] + "        " + frecuenciaAbsoluta[j] + "      " + frecuenciaAcumulada[j]);
+          //FIJARSE COMO APARECE IMPRESO
+              }
+         }
             }
             if(opciones[i]==11){
                 /*Ejecutar método correspondiente y mostrar resultado*/
@@ -191,5 +200,14 @@ public static double[] calcularDesviaciones(double[] datos) {
 
         return new Object[]{numerosSinRepetir, frecuenciasArray};
     }
+
+  public static int [] calcularFrecuenciaAbsolutaAcumulada(int[] frecuenciaAbsoluta) {
+    int [] acumulada = new int [frecuenciaAbsoluta.length];
+    int suma = 0;
+    for (int i = 0; i < frecuenciaAbsoluta.length; i ++) {
+        suma = suma + frecuenciaAbsoluta[i];
+        acumulada[i] = suma;
+    }
+    return acumulada;
   }
   }

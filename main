@@ -64,6 +64,10 @@ public class Main {
             }
             if(opciones[i]==6){
                /*Ejecutar método correspondiente y mostrar resultado*/
+            double[] desviaciones = calcularDesviaciones(datos);
+          System.out.println("Desviación estándar poblacional: " + desviaciones[0]);
+        System.out.println("Desviación estándar muestral: " + desviaciones[1]);
+
            }
 
             if(opciones[i]==7){
@@ -146,6 +150,14 @@ public static double [] calcularVarianza(double[] datos){
 
     return new double[]{varianzapoblacional, varianzamuestral};
 }
+public static double[] calcularDesviaciones(double[] datos) {
+    double[] varianzas = calcularVarianza(datos);
+    double desvPoblacional = Math.sqrt(varianzas[0]);
+    double desvMuestral = Math.sqrt(varianzas[1]);
+    //para hacer raiz
+    return new double[]{desvPoblacional, desvMuestral};
+}
+
 
     public static Object[] calcularFrecuenciaAbsoluta(double[] datos){
 

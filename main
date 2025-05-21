@@ -60,14 +60,14 @@ public class Main {
             if(opciones[i]==5){
                /*Ejecutar método correspondiente y mostrar resultado*/
                     double[] varianzas = calcularVarianzas(datos);
-                     System.out.println("Varianza Poblacional: " + varianzas[0]);
-                     System.out.println("Varianza Muestral: " + varianzas[1]);
+                     System.out.println("  (Varianza Poblacional)---> " + varianzas[0]);
+                     System.out.println("  (Varianza Muestral)---> " + varianzas[1]);
             }
             if(opciones[i]==6){
                /*Ejecutar método correspondiente y mostrar resultado*/
             double[] desviaciones = calcularDesviaciones(datos);
-          System.out.println("Desviación estándar poblacional: " + desviaciones[0]);
-        System.out.println("Desviación estándar muestral: " + desviaciones[1]);
+          System.out.println("    (Desviación estándar poblacional)---> " + desviaciones[0]);
+        System.out.println("    (Desviación estándar muestral)---> " + desviaciones[1]);
 
            }
 

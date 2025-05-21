@@ -92,7 +92,6 @@ public class Main {
             for (int j = 0; j < frecuenciaAcumulada.length; j++) {
             System.out.println(numerosSinRepetir[j] + "   (FrecuenciaAbsoluta)---> " + frecuenciaAbsoluta[j] + "     (FrecuenciaAbsolutaAcumulada)---> " + frecuenciaAcumulada[j]);
               }
-         }
             }
             if(opciones[i]==11){
                 /*Ejecutar método correspondiente y mostrar resultado*/

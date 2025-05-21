@@ -102,22 +102,19 @@ public class Main {
         }
 
 
-    System.out.println("Seguir con el programa?? sí/no");
-            String resp = input.nextLine().trim(). toLowerCase();
-            if (resp.equals("si") || resp.equals("sí"))
-            {
-                rept = true;
+    while (true) {
+                System.out.println("¿Deseás seguir con el programa? sí/no");
+                String resp = input.nextLine().trim().toLowerCase();
+
+                if (resp.equals("si") || resp.equals("sí") || resp.equals("s")) {
+                    break;
+                } else if (resp.equals("no") || resp.equals("n")) {
+                    rept = false;
+                    break;
+                } else {
+                    System.out.println("Entrada inválida. Por favor escribí 'sí' o 'no'.");
+                }
             }
-            else if (resp.equals("no"))
-            {
-                rept = false;
-            }
-            else
-            {
-                System.out.println("Reintentar. Seguir con el programa?");
-            }
-         }
-    }
     public static boolean validarCaracteres(String ingreso) {
         boolean esInicioNumero = true; // Indica si estamos al inicio de un número
 

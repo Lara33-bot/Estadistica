@@ -71,6 +71,7 @@ public class Main {
            }
 
             if(opciones[i]==7){
+               /*Ejecutar método correspondiente y mostrar resultado*/
                 int[] frecuenciaAbsoluta = (int[]) resultado[1];
                 System.out.println("Frecuencia absoluta:");
                 for (int j = 0; j < frecuenciaAbsoluta.length; j++) {

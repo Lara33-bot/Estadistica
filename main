@@ -87,7 +87,6 @@ public class Main {
             }
             if(opciones[i]==10){
                 /*Ejecutar método correspondiente y mostrar resultado*/
-              if(opciones[i]==10){
             int[] frecuenciaAbsoluta = (int[]) resultado[1];
             int[] frecuenciaAcumulada = calcularFrecuenciaAbsolutaAcumulada(frecuenciaAbsoluta);
             for (int j = 0; j < frecuenciaAcumulada.length; j++) {

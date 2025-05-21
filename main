@@ -83,6 +83,12 @@ public class Main {
             if(opciones[i]==9){
                 /*Ejecutar método correspondiente y mostrar resultado*/
             }
+            if(opciones[i]==10){
+                /*Ejecutar método correspondiente y mostrar resultado*/
+            }
+            if(opciones[i]==11){
+                /*Ejecutar método correspondiente y mostrar resultado*/
+            }
         }
 
 

@@ -59,14 +59,13 @@ public class Main {
             }
             if(opciones[i]==3){
                 double moda = calcularModa(datos);
-                    System.out.println("La mediana es: " + moda);
+                    System.out.println("La moda es: " + moda);
             }
             if(opciones[i]==4){
                 double rango = calcularRango(datos);
                 System.out.println("El rango es: " + rango);
             }
             if(opciones[i]==5){
-               /*Ejecutar método correspondiente y mostrar resultado*/
                     double[] varianzas = calcularVarianzas(datos);
                      System.out.println("  (Varianza Poblacional)---> " + varianzas[0]);
                      System.out.println("  (Varianza Muestral)---> " + varianzas[1]);
@@ -92,10 +91,9 @@ public class Main {
             }
             if(opciones[i]==9){
                  int[] frecuenciaAbsoluta = (int[]) resultado[1];
-                    calcularFrecuenciaRelativa(datos, numerosSinRepetir, frecuenciaAbsoluta);
+                 calcularFrecuenciaRelativa(datos, numerosSinRepetir, frecuenciaAbsoluta);
             }
             if(opciones[i]==10){
-                /*Ejecutar método correspondiente y mostrar resultado*/
             int[] frecuenciaAbsoluta = (int[]) resultado[1];
             int[] frecuenciaAcumulada = calcularFrecuenciaAbsolutaAcumulada(frecuenciaAbsoluta);
             for (int j = 0; j < frecuenciaAcumulada.length; j++) {

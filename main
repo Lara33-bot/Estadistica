@@ -33,7 +33,8 @@ public class Main {
                 "8 --> Calcular frecuencia relativa\n" +
                 "9 --> Calcular frecuencia relativa acumulada\n" +
                 "10 --> Calcular frecuencia absoluta acumulada\n" +
-                "11 --> Calcular frecuencia porcentual\n");
+                "11 --> Calcular frecuencia porcentual\n"
+                "12 --> Calcular frecuencias completa\n");
         input = new Scanner(System.in);
 
         String opcionesIngresadas = input.nextLine();
@@ -97,6 +98,9 @@ public class Main {
          }
             }
             if(opciones[i]==11){
+                /*Ejecutar método correspondiente y mostrar resultado*/
+            }
+            if(opciones[i]==12){
                 /*Ejecutar método correspondiente y mostrar resultado*/
             }
         }

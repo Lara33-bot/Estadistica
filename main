@@ -36,11 +36,17 @@ public class Main {
                 "11 --> Calcular frecuencia porcentual\n" + 
                 "12 --> Calcular frecuencias completa\n");
         input = new Scanner(System.in);
+            double[] opciones = new double[0];
+            do{
+                String opcionesIngresadas = input.nextLine();
+                opciones = convertirArray(opcionesIngresadas);
+                if(!validarOpciones(opciones)){
+                    System.out.println("Las opciones seleccionadas no son válidas, inténtalo de nuevo");
+                }
+            }while (!validarOpciones(opciones));
 
-        String opcionesIngresadas = input.nextLine();
-        double[] opciones = convertirArray(opcionesIngresadas);
-        Object[] resultado = calcularFrecuenciaAbsoluta(datos);
-        double[] numerosSinRepetir = (double[]) resultado[0];
+            Object[] resultado = calcularFrecuenciaAbsoluta(datos);
+            double[] numerosSinRepetir = (double[]) resultado[0];
 
         for(int i = 0; i<opciones.length; i++){
             if(opciones[i]==1){
@@ -222,4 +228,18 @@ public static double[] calcularDesviaciones(double[] datos) {
     }
     return acumulada;
   }
+
+public static boolean validarOpciones(double[] opciones){
+        for(double num : opciones){
+            if(num % 1 !=0){
+                return false;
+            }
+            else{
+                if(num < 1 || num >11){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
   }

@@ -14,12 +14,12 @@ public class Main {
       String ingreso;
         /*Ingreso y validación de datos a analizar*/
         do{
-            System.out.println("Ingrese los números separados por ; sin dejar espacios y use . para los decimales");
+            System.out.println("Ingrese al menos 2 números separados por ; sin dejar espacios y use . para los decimales");
             ingreso = input.nextLine();
-            if(!validarCaracteres(ingreso)){ /*Llama al método validarCaracteres*/
-                System.out.println("Entrada inválida, inténtalo de nuevo");
+            if(!validarCaracteres(ingreso) || convertirArray(ingreso).length < 2){ /*Llama al método validarCaracteres*/
+                System.out.println("Entrada inválida o insuficiente, inténtalo de nuevo");
             }
-        }while(!validarCaracteres(ingreso));/*No termina el bucle hasta que la validación sea positiva*/
+        }while(!validarCaracteres(ingreso) || convertirArray(ingreso).length < 2);/*No termina el bucle hasta que la validación sea positiva*/
         double[] datos = convertirArray(ingreso);/*El método convertirArray convierte los números ingresados en un array y quedan guardados en esta variable*/
         /*Selección de cálculos a realizar*/
         System.out.println("Ingrese los calculos a realizar separados por ;");
@@ -118,16 +118,24 @@ public class Main {
             }
          }
     }
-    public static boolean validarCaracteres(String ingreso){
-        for(char c : ingreso.toCharArray()){
-            if(!Character.isDigit(c) && c != '.' && c != ';'){
+    public static boolean validarCaracteres(String ingreso) {
+        boolean esInicioNumero = true; // Indica si estamos al inicio de un número
+
+        for (int i = 0; i < ingreso.length(); i++) {
+            char c = ingreso.charAt(i);
+            if (!Character.isDigit(c) && c != '.' && c != ';' && c != '-') {
                 return false;
             }
-
+            if (c == '-') {
+                if (i == ingreso.length() - 1 || (!esInicioNumero && ingreso.charAt(i - 1) != ';')) {
+                    return false;
+                }
+            }
+            esInicioNumero = (c == ';');
         }
+
         return true;
     }
-
     public static double[] convertirArray(String opcionesIngresadas){
         String[] opciones = opcionesIngresadas.split(";");
         double[] numeros = new double[opciones.length];

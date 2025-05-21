@@ -50,18 +50,20 @@ public class Main {
 
         for(int i = 0; i<opciones.length; i++){
             if(opciones[i]==1){
-                /*Ejecutar método correspondiente y mostrar resultado*/
+                  double media = calcularMedia(datos);
+                  System.out.println("La media es: " + media);
             }
             if(opciones[i]==2){
-                /*Ejecutar método correspondiente y mostrar resultado*/
                 double mediana = calcularMediana(datos);
                 System.out.println("La mediana es: "+mediana);
             }
             if(opciones[i]==3){
-                /*Ejecutar método correspondiente y mostrar resultado*/
+                double moda = calcularModa(datos);
+                    System.out.println("La mediana es: " + moda);
             }
             if(opciones[i]==4){
-                /*Ejecutar método correspondiente y mostrar resultado*/
+                double rango = calcularRango(datos);
+                System.out.println("El rango es: " + rango);
             }
             if(opciones[i]==5){
                /*Ejecutar método correspondiente y mostrar resultado*/

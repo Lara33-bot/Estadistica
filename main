@@ -89,7 +89,8 @@ public class Main {
                 /*Ejecutar método correspondiente y mostrar resultado*/
             }
             if(opciones[i]==9){
-                /*Ejecutar método correspondiente y mostrar resultado*/
+                 int[] frecuenciaAbsoluta = (int[]) resultado[1];
+                    calcularFrecuenciaRelativa(datos, numerosSinRepetir, frecuenciaAbsoluta);
             }
             if(opciones[i]==10){
                 /*Ejecutar método correspondiente y mostrar resultado*/
@@ -217,6 +218,15 @@ public static double[] calcularDesviaciones(double[] datos) {
 
 
         return new Object[]{numerosSinRepetir, frecuenciasArray};
+    }
+  public static void calcularFrecuenciaRelativa(double[] datos, double[] numerosSinRepetir, int[] frecuenciaAbsoluta) {
+        int total = datos.length;
+
+        System.out.println("Frecuencia relativa:");
+        for (int i = 0; i < numerosSinRepetir.length; i++) {
+            double relativa = (double) frecuenciaAbsoluta[i] / total;
+            System.out.println(numerosSinRepetir[i] + "  ---> " + relativa);
+        }
     }
 
   public static int [] calcularFrecuenciaAbsolutaAcumulada(int[] frecuenciaAbsoluta) {

@@ -141,7 +141,7 @@ public class Main {
         }
         return medianaCalculada;
     }
-public static double [] calcularVarianza(double[] datos){
+public static double [] calcularVarianzas(double[] datos){
    double sumv = 0, sumcuadrado = 0;
 
    for (int i = 0; i < datos.length; i++) {
@@ -158,7 +158,7 @@ public static double [] calcularVarianza(double[] datos){
     return new double[]{varianzapoblacional, varianzamuestral};
 }
 public static double[] calcularDesviaciones(double[] datos) {
-    double[] varianzas = calcularVarianza(datos);
+    double[] varianzas = calcularVarianzas(datos);
     double desvPoblacional = Math.sqrt(varianzas[0]);
     double desvMuestral = Math.sqrt(varianzas[1]);
     //para hacer raiz

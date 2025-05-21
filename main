@@ -90,10 +90,8 @@ public class Main {
               if(opciones[i]==10){
             int[] frecuenciaAbsoluta = (int[]) resultado[1];
             int[] frecuenciaAcumulada = calcularFrecuenciaAbsolutaAcumulada(frecuenciaAbsoluta);
-           System.out.println("Valor  /  Frecuencia Absoluta  /  Frecuencia Absoluta Acumulada:");
             for (int j = 0; j < frecuenciaAcumulada.length; j++) {
-            System.out.println(numerosSinRepetir[j] + "        " + frecuenciaAbsoluta[j] + "      " + frecuenciaAcumulada[j]);
-          //FIJARSE COMO APARECE IMPRESO
+            System.out.println(numerosSinRepetir[j] + "   (FrecuenciaAbsoluta)---> " + frecuenciaAbsoluta[j] + "     (FrecuenciaAbsolutaAcumulada)---> " + frecuenciaAcumulada[j]);
               }
          }
             }

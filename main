@@ -144,6 +144,13 @@ public class Main {
         }
         return numeros;
     }
+    public static double calcularMedia(double[] datos) {
+        double suma = 0;
+        for (int i = 0; i < datos.length; i++) {
+            suma += datos[i]; // suma los datos
+        }
+        return suma / datos.length; // divide la suma entre la cantidad de datos
+    }
     public static double calcularMediana(double[] datos){
         int n = datos.length;
         double medianaCalculada;

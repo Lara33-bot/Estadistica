@@ -116,7 +116,7 @@ public class Main {
             {
                 System.out.println("Reintentar. Seguir con el programa?");
             }
-
+         }
     }
     public static boolean validarCaracteres(String ingreso){
         for(char c : ingreso.toCharArray()){

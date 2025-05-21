@@ -22,7 +22,7 @@ public class Main {
         }while(!validarCaracteres(ingreso) || convertirArray(ingreso).length < 2);/*No termina el bucle hasta que la validación sea positiva*/
         double[] datos = convertirArray(ingreso);/*El método convertirArray convierte los números ingresados en un array y quedan guardados en esta variable*/
         /*Selección de cálculos a realizar*/
-        System.out.println("Ingrese los calculos a realizar separados por ;");
+        System.out.println("Ingrese los cálculos a realizar separados por ;");
         System.out.println("1 --> Calcular media\n" +
                 "2 --> Calcular mediana\n" +
                 "3 --> Calcular moda\n" +

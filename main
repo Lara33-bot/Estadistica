@@ -23,18 +23,22 @@ public class Main {
         double[] datos = convertirArray(ingreso);/*El método convertirArray convierte los números ingresados en un array y quedan guardados en esta variable*/
         /*Selección de cálculos a realizar*/
         System.out.println("Ingrese los cálculos a realizar separados por ;");
-        System.out.println("1 --> Calcular media\n" +
-                "2 --> Calcular mediana\n" +
-                "3 --> Calcular moda\n" +
-                "4 --> Calcular rango\n" +
-                "5 --> Calcular varianza\n" +
-                "6 --> Calcular desviación estándar\n" +
-                "7 --> Calcular frecuencia absoluta\n" +
-                "8 --> Calcular frecuencia relativa\n" +
-                "9 --> Calcular frecuencia relativa acumulada\n" +
-                "10 --> Calcular frecuencia absoluta acumulada\n" + 
-                "11 --> Calcular frecuencia porcentual\n" + 
-                "12 --> Calcular frecuencias completa\n");
+        System.out.println
+                    ("---MEDIDAS DE POSICION---\n" +
+                    "1 --> Calcular media\n" +
+                    "2 --> Calcular mediana\n" +
+                    "3 --> Calcular moda\n" +
+                    "---MEDIDAS DE DISPERSION---\n" +
+                    "4 --> Calcular rango\n" +
+                    "5 --> Calcular varianza\n" +
+                    "6 --> Calcular desviación estándar\n" +
+                    "---FRECUENCIAS---\n" +
+                    "7 --> Calcular frecuencia absoluta\n" +
+                    "8 --> Calcular frecuencia relativa\n" +
+                    "9 --> Calcular frecuencia relativa acumulada\n" +
+                    "10 --> Calcular frecuencia absoluta acumulada\n" +
+                    "11 --> Calcular frecuencia porcentual\n"
+                    );
         input = new Scanner(System.in);
             double[] opciones = new double[0];
             do{

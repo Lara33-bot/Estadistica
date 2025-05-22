@@ -87,7 +87,8 @@ public class Main {
                 }
             }
             if(opciones[i]==8){
-                /*Ejecutar método correspondiente y mostrar resultado*/
+                int[] frecuenciaAbsoluta = (int[]) resultado[1];
+                    calcularFrecuenciaRelativa(datos, numerosSinRepetir, frecuenciaAbsoluta);
             }
             if(opciones[i]==9){
                  int[] frecuenciaAbsoluta = (int[]) resultado[1];

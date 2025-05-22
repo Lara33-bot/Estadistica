@@ -1,4 +1,10 @@
-import java.util.*;
+import java.util.Scanner;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -86,21 +92,15 @@ public class Main {
                     }
                 }
                 if (opciones[i] == 8) {
-                    int[] frecuenciaAbsoluta = (int[]) resultado[1];
-                    double[] frecuenciaRelativa = calcularFrecuenciaRelativa(datos, frecuenciaAbsoluta);
-                    System.out.println("Frecuencia relativa:");
-                    for (int j = 0; j < frecuenciaRelativa.length; j++) {
-                        System.out.println(numerosSinRepetir[j] + "  --->  " + frecuenciaRelativa[j]);
+                    double[] frecuenciaRelativa = calcularFrecuenciaRelativa(datos,resultado);
+                    for(i = 0; i<frecuenciaRelativa.length; i++){
+                        System.out.println(numerosSinRepetir[i]+"--(Fr.Relativa)--> "+frecuenciaRelativa[i]);
                     }
+
                 }
                 if (opciones[i] == 9) {
                     int[] frecuenciaAbsoluta = (int[]) resultado[1];
-                    double[] frecuenciaRelativa = calcularFrecuenciaRelativa(datos, frecuenciaAbsoluta);
-                    double[] frecuenciaRelativaAcumulada = calcularFrecuenciaRelativaAcumulada(frecuenciaRelativa);
-
-                   System.out.println("Frecuencia relativa acumulada:");
-                     for (int j = 0; j < frecuenciaRelativaAcumulada.length; j++) {
-                     System.out.println(numerosSinRepetir[j] + "   (FrecuenciaRelativa)---> " + frecuenciaRelativa[j] + "     (FrecuenciaRelativaAcumulada)---> " + frecuenciaRelativaAcumulada[j]);
+                    calcularFrecuenciaRelativa(datos, numerosSinRepetir, frecuenciaAbsoluta);
                 }
                 if (opciones[i] == 10) {
                     int[] frecuenciaAbsoluta = (int[]) resultado[1];
@@ -110,10 +110,19 @@ public class Main {
                     }
                 }
                 if (opciones[i] == 11) {
-                    /*Ejecutar método correspondiente y mostrar resultado*/
+                    double[] frecuenciaPorcentual = calcularFrecuenciaPorcentual(datos, resultado);
+                    int[] frecuenciaAbsoluta = (int[]) resultado[1];
+                    for(i =0;i<frecuenciaPorcentual.length;i++){
+                        System.out.println(numerosSinRepetir[i]+" --(Fr.Absoluta)--> "+frecuenciaAbsoluta[i]+" --(Fr.Porcentual)--> "+ frecuenciaPorcentual[i]+"%");
+                    }
+
                 }
                 if (opciones[i] == 12) {
-                    /*Ejecutar método correspondiente y mostrar resultado*/
+                    double[] frPorcentualAcumulada = calcularFrecuenciaPorcentualAcumulada(datos, resultado);
+                    int[] frecuenciaAbsoluta = (int[]) resultado[1];
+                    for(i =0;i<frPorcentualAcumulada.length;i++){
+                        System.out.println(numerosSinRepetir[i]+" --(Fr.Absoluta)--> "+frecuenciaAbsoluta[i]+" --(Fr.Porcentual)--> "+ frPorcentualAcumulada[i]+"%");
+                    }
                 }
             }
 
@@ -255,25 +264,14 @@ public class Main {
 
         return new Object[]{numerosSinRepetir, frecuenciasArray};
     }
-    public static void calcularFrecuenciaRelativa(double[] datos, double[] numerosSinRepetir, int[] frecuenciaAbsoluta) {
-        int total = datos.length;
-
-        System.out.println("Frecuencia relativa:");
-        for (int i = 0; i < numerosSinRepetir.length; i++) {
-            double relativa = (double) frecuenciaAbsoluta[i] / total;
-            System.out.println(numerosSinRepetir[i] + "  ---> " + relativa);
+    public static <object> double[] calcularFrecuenciaRelativa(double[] datos, object[] resultado) {
+        double[] frAbsoluta = (double[]) resultado[1];
+        double[] frRelativa = new double[frAbsoluta.length];
+        for(int i=0; i< frAbsoluta.length;i++){
+            frRelativa[i] = frAbsoluta[i]/datos.length;
         }
+        return frRelativa;
     }
-            public static double [] calcularFrecuenciaRelativaAcumulada(double [] frecuenciarelativa) {
-                double sumr = 0;
-                double [] acumuladar = new double [frecuenciarelativa.length];
-             for (int i = 0; i < frecuenciarelativa.length; i ++)
-             {
-                 sumr = sumr + frecuenciarelativa[i];
-                 acumuladar[i] = sumr;
-             }
-             return acumuladar;
-            }
 
     public static int [] calcularFrecuenciaAbsolutaAcumulada(int[] frecuenciaAbsoluta) {
         int [] acumulada = new int [frecuenciaAbsoluta.length];
@@ -291,11 +289,32 @@ public class Main {
                 return false;
             }
             else{
-                if(num < 1 || num >11){
+                if(num < 1 || num >12){
                     return false;
                 }
             }
         }
         return true;
+    }
+    public static <object> double[] calcularFrecuenciaPorcentual(double[] datos, object[] resultado){
+        double[] frRelativa = calcularFrecuenciaRelativa(datos, resultado);
+        double[] frPorcentual = new double[frRelativa.length];
+        for(int j = 0; j< frRelativa.length;j++){
+            frPorcentual[j] = frRelativa[j] * 100;
+        }
+        return frPorcentual;
+    }
+    public static <object> double[] calcularFrecuenciaPorcentualAcumulada(double[] datos, object[] resultado){
+        double[] frPorcentual = calcularFrecuenciaPorcentual(datos, resultado);
+        double[] frPorcentualAcu = new double[frPorcentual.length];
+        for (int i=0;i<frPorcentual.length;i++){
+            if(i == 0){
+                frPorcentualAcu[i] = frPorcentualAcu[i] + frPorcentual[i];
+            }
+            else{
+                frPorcentualAcu[i] = frPorcentualAcu[i-1] + frPorcentual[i];
+            }
+        }
+        return frPorcentualAcu;
     }
 }

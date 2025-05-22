@@ -37,7 +37,8 @@ public class Main {
                     "8 --> Calcular frecuencia relativa\n" +
                     "9 --> Calcular frecuencia relativa acumulada\n" +
                     "10 --> Calcular frecuencia absoluta acumulada\n" +
-                    "11 --> Calcular frecuencia porcentual\n"
+                    "11 --> Calcular frecuencia porcentual\n" +
+                    "12 --> Calcular frecuencia porcentual acumulada\n" 
                     );
         input = new Scanner(System.in);
             double[] opciones = new double[0];

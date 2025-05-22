@@ -1,125 +1,119 @@
-import java.util.Scanner;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.*;
 
 public class Main {
-  public static void main (String[]args) {
-      Scanner input = new Scanner (System.in);
-      boolean rept = true;
-      while (rept)
-      {
-      String ingreso;
-        /*Ingreso y validación de datos a analizar*/
-        do{
-            System.out.println("Ingrese al menos 2 números separados por ; sin dejar espacios y use . para los decimales");
-            ingreso = input.nextLine();
-            if(!validarCaracteres(ingreso) || convertirArray(ingreso).length < 2){ /*Llama al método validarCaracteres*/
-                System.out.println("Entrada inválida o insuficiente, inténtalo de nuevo");
-            }
-        }while(!validarCaracteres(ingreso) || convertirArray(ingreso).length < 2);/*No termina el bucle hasta que la validación sea positiva*/
-        double[] datos = convertirArray(ingreso);/*El método convertirArray convierte los números ingresados en un array y quedan guardados en esta variable*/
-        /*Selección de cálculos a realizar*/
-        System.out.println("Ingrese los cálculos a realizar separados por ;");
-        System.out.println
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        boolean rept = true;
+        while (rept) {
+            String ingreso;
+            /*Ingreso y validación de datos a analizar*/
+            do {
+                System.out.println("Ingrese al menos 2 números separados por ; sin dejar espacios y use . para los decimales");
+                ingreso = input.nextLine();
+                if (!validarCaracteres(ingreso) || convertirArray(ingreso).length < 2) { /*Llama al método validarCaracteres*/
+                    System.out.println("Entrada inválida o insuficiente, inténtalo de nuevo");
+                }
+            } while (!validarCaracteres(ingreso) || convertirArray(ingreso).length < 2);/*No termina el bucle hasta que la validación sea positiva*/
+            double[] datos = convertirArray(ingreso);/*El método convertirArray convierte los números ingresados en un array y quedan guardados en esta variable*/
+            /*Selección de cálculos a realizar*/
+            System.out.println("Ingrese los cálculos a realizar separados por ;");
+            System.out.println
                     ("---MEDIDAS DE POSICION---\n" +
-                    "1 --> Calcular media\n" +
-                    "2 --> Calcular mediana\n" +
-                    "3 --> Calcular moda\n" +
-                    "---MEDIDAS DE DISPERSION---\n" +
-                    "4 --> Calcular rango\n" +
-                    "5 --> Calcular varianza\n" +
-                    "6 --> Calcular desviación estándar\n" +
-                    "---FRECUENCIAS---\n" +
-                    "7 --> Calcular frecuencia absoluta\n" +
-                    "8 --> Calcular frecuencia relativa\n" +
-                    "9 --> Calcular frecuencia relativa acumulada\n" +
-                    "10 --> Calcular frecuencia absoluta acumulada\n" +
-                    "11 --> Calcular frecuencia porcentual\n" +
-                    "12 --> Calcular frecuencia porcentual acumulada\n" 
+                            "1 --> Calcular media\n" +
+                            "2 --> Calcular mediana\n" +
+                            "3 --> Calcular moda\n" +
+                            "---MEDIDAS DE DISPERSION---\n" +
+                            "4 --> Calcular rango\n" +
+                            "5 --> Calcular varianza\n" +
+                            "6 --> Calcular desviación estándar\n" +
+                            "---FRECUENCIAS---\n" +
+                            "7 --> Calcular frecuencia absoluta\n" +
+                            "8 --> Calcular frecuencia relativa\n" +
+                            "9 --> Calcular frecuencia relativa acumulada\n" +
+                            "10 --> Calcular frecuencia absoluta acumulada\n" +
+                            "11 --> Calcular frecuencia porcentual\n" +
+                            "12 --> Calcular frecuencia porcentual acumulada\n"
                     );
-        input = new Scanner(System.in);
+            input = new Scanner(System.in);
             double[] opciones = new double[0];
-            do{
+            do {
                 String opcionesIngresadas = input.nextLine();
                 opciones = convertirArray(opcionesIngresadas);
-                if(!validarOpciones(opciones)){
+                if (!validarOpciones(opciones)) {
                     System.out.println("Las opciones seleccionadas no son válidas, inténtalo de nuevo");
                 }
-            }while (!validarOpciones(opciones));
+            } while (!validarOpciones(opciones));
 
             Object[] resultado = calcularFrecuenciaAbsoluta(datos);
             double[] numerosSinRepetir = (double[]) resultado[0];
 
-        for(int i = 0; i<opciones.length; i++){
-            if(opciones[i]==1){
-                  double media = calcularMedia(datos);
-                  System.out.println("La media es: " + media);
-            }
-            if(opciones[i]==2){
-                double mediana = calcularMediana(datos);
-                System.out.println("La mediana es: "+mediana);
-            }
-            if(opciones[i]==3){
-                double moda = calcularModa(datos);
-                    System.out.println("La moda es: " + moda);
-            }
-            if(opciones[i]==4){
-                double rango = calcularRango(datos);
-                System.out.println("El rango es: " + rango);
-            }
-            if(opciones[i]==5){
-                    double[] varianzas = calcularVarianzas(datos);
-                     System.out.println("  (Varianza Poblacional)---> " + varianzas[0]);
-                     System.out.println("  (Varianza Muestral)---> " + varianzas[1]);
-            }
-            if(opciones[i]==6){
-               /*Ejecutar método correspondiente y mostrar resultado*/
-            double[] desviaciones = calcularDesviaciones(datos);
-          System.out.println("    (Desviación estándar poblacional)---> " + desviaciones[0]);
-        System.out.println("    (Desviación estándar muestral)---> " + desviaciones[1]);
-
-           }
-
-            if(opciones[i]==7){
-               /*Ejecutar método correspondiente y mostrar resultado*/
-                int[] frecuenciaAbsoluta = (int[]) resultado[1];
-                System.out.println("Frecuencia absoluta:");
-                for (int j = 0; j < frecuenciaAbsoluta.length; j++) {
-                    System.out.println(numerosSinRepetir[j] +"  (FrecuenciaAbsoluta)---> "+frecuenciaAbsoluta[j]);
+            for (int i = 0; i < opciones.length; i++) {
+                if (opciones[i] == 1) {
+                    double media = calcularMedia(datos);
+                    System.out.println("La media es: " + media);
                 }
-            }
-            if(opciones[i]==8){
-                int[] frecuenciaAbsoluta = (int[]) resultado[1];
-                    double[] frecuenciaRelativa = calcularFrecuenciaRelativa(datos, frecuenciaAbsoluta );
+                if (opciones[i] == 2) {
+                    double mediana = calcularMediana(datos);
+                    System.out.println("La mediana es: " + mediana);
+                }
+                if (opciones[i] == 3) {
+                    double moda = calcularModa(datos);
+                    System.out.println("La moda es: " + moda);
+                }
+                if (opciones[i] == 4) {
+                    double rango = calcularRango(datos);
+                    System.out.println("El rango es: " + rango);
+                }
+                if (opciones[i] == 5) {
+                    double[] varianzas = calcularVarianzas(datos);
+                    System.out.println("  (Varianza Poblacional)---> " + varianzas[0]);
+                    System.out.println("  (Varianza Muestral)---> " + varianzas[1]);
+                }
+                if (opciones[i] == 6) {
+                    /*Ejecutar método correspondiente y mostrar resultado*/
+                    double[] desviaciones = calcularDesviaciones(datos);
+                    System.out.println("    (Desviación estándar poblacional)---> " + desviaciones[0]);
+                    System.out.println("    (Desviación estándar muestral)---> " + desviaciones[1]);
+
+                }
+
+                if (opciones[i] == 7) {
+                    /*Ejecutar método correspondiente y mostrar resultado*/
+                    int[] frecuenciaAbsoluta = (int[]) resultado[1];
+                    System.out.println("Frecuencia absoluta:");
+                    for (int j = 0; j < frecuenciaAbsoluta.length; j++) {
+                        System.out.println(numerosSinRepetir[j] + "  (FrecuenciaAbsoluta)---> " + frecuenciaAbsoluta[j]);
+                    }
+                }
+                if (opciones[i] == 8) {
+                    int[] frecuenciaAbsoluta = (int[]) resultado[1];
+                    double[] frecuenciaRelativa = calcularFrecuenciaRelativa(datos, frecuenciaAbsoluta);
                     System.out.println("Frecuencia relativa:");
                     for (int j = 0; j < frecuenciaRelativa.length; j++) {
                         System.out.println(numerosSinRepetir[j] + "  --->  " + frecuenciaRelativa[j]);
                     }
+                }
+                if (opciones[i] == 9) {
+                    int[] frecuenciaAbsoluta = (int[]) resultado[1];
+                    calcularFrecuenciaRelativa(datos, numerosSinRepetir, frecuenciaAbsoluta);
+                }
+                if (opciones[i] == 10) {
+                    int[] frecuenciaAbsoluta = (int[]) resultado[1];
+                    int[] frecuenciaAcumulada = calcularFrecuenciaAbsolutaAcumulada(frecuenciaAbsoluta);
+                    for (int j = 0; j < frecuenciaAcumulada.length; j++) {
+                        System.out.println(numerosSinRepetir[j] + "   (FrecuenciaAbsoluta)---> " + frecuenciaAbsoluta[j] + "     (FrecuenciaAbsolutaAcumulada)---> " + frecuenciaAcumulada[j]);
+                    }
+                }
+                if (opciones[i] == 11) {
+                    /*Ejecutar método correspondiente y mostrar resultado*/
+                }
+                if (opciones[i] == 12) {
+                    /*Ejecutar método correspondiente y mostrar resultado*/
+                }
             }
-            if(opciones[i]==9){
-                 int[] frecuenciaAbsoluta = (int[]) resultado[1];
-                 calcularFrecuenciaRelativa(datos, numerosSinRepetir, frecuenciaAbsoluta);
-            }
-            if(opciones[i]==10){
-            int[] frecuenciaAbsoluta = (int[]) resultado[1];
-            int[] frecuenciaAcumulada = calcularFrecuenciaAbsolutaAcumulada(frecuenciaAbsoluta);
-            for (int j = 0; j < frecuenciaAcumulada.length; j++) {
-            System.out.println(numerosSinRepetir[j] + "   (FrecuenciaAbsoluta)---> " + frecuenciaAbsoluta[j] + "     (FrecuenciaAbsolutaAcumulada)---> " + frecuenciaAcumulada[j]);
-              }
-            }
-            if(opciones[i]==11){
-                /*Ejecutar método correspondiente y mostrar resultado*/
-            }
-            if(opciones[i]==12){
-                /*Ejecutar método correspondiente y mostrar resultado*/
-            }
-        }
 
 
-    while (true) {
+            while (true) {
                 System.out.println("¿Deseás seguir con el programa? sí/no");
                 String resp = input.nextLine().trim().toLowerCase();
 
@@ -132,6 +126,9 @@ public class Main {
                     System.out.println("Entrada inválida. Por favor escribí 'sí' o 'no'.");
                 }
             }
+
+        }
+    }
     public static boolean validarCaracteres(String ingreso) {
         boolean esInicioNumero = true; // Indica si estamos al inicio de un número
 
@@ -200,32 +197,32 @@ public class Main {
         return moda;
     }
     public static double calcularRango(double[] datos) {
-        Arrays.sort(datos); 
+        Arrays.sort(datos);
         return datos[datos.length - 1] - datos[0];
     }
     public static double [] calcularVarianzas(double[] datos){
-   double sumv = 0, sumcuadrado = 0;
+        double sumv = 0, sumcuadrado = 0;
 
-   for (int i = 0; i < datos.length; i++) {
-       sumv = sumv + datos[i];
-   }
-     double mediav = sumv / datos.length;
-   for (int i = 0; i < datos.length; i++) {
-       double restav = datos[i] - mediav;
-       sumcuadrado = sumcuadrado + (restav * restav);
-   }
-    double varianzapoblacional = sumcuadrado / datos.length;
-    double varianzamuestral = sumcuadrado / (datos.length-1);
+        for (int i = 0; i < datos.length; i++) {
+            sumv = sumv + datos[i];
+        }
+        double mediav = sumv / datos.length;
+        for (int i = 0; i < datos.length; i++) {
+            double restav = datos[i] - mediav;
+            sumcuadrado = sumcuadrado + (restav * restav);
+        }
+        double varianzapoblacional = sumcuadrado / datos.length;
+        double varianzamuestral = sumcuadrado / (datos.length-1);
 
-    return new double[]{varianzapoblacional, varianzamuestral};
-}
-public static double[] calcularDesviaciones(double[] datos) {
-    double[] varianzas = calcularVarianzas(datos);
-    double desvPoblacional = Math.sqrt(varianzas[0]);
-    double desvMuestral = Math.sqrt(varianzas[1]);
-    //para hacer raiz
-    return new double[]{desvPoblacional, desvMuestral};
-}
+        return new double[]{varianzapoblacional, varianzamuestral};
+    }
+    public static double[] calcularDesviaciones(double[] datos) {
+        double[] varianzas = calcularVarianzas(datos);
+        double desvPoblacional = Math.sqrt(varianzas[0]);
+        double desvMuestral = Math.sqrt(varianzas[1]);
+        //para hacer raiz
+        return new double[]{desvPoblacional, desvMuestral};
+    }
 
 
     public static Object[] calcularFrecuenciaAbsoluta(double[] datos){
@@ -263,17 +260,17 @@ public static double[] calcularDesviaciones(double[] datos) {
         }
     }
 
-  public static int [] calcularFrecuenciaAbsolutaAcumulada(int[] frecuenciaAbsoluta) {
-    int [] acumulada = new int [frecuenciaAbsoluta.length];
-    int suma = 0;
-    for (int i = 0; i < frecuenciaAbsoluta.length; i ++) {
-        suma = suma + frecuenciaAbsoluta[i];
-        acumulada[i] = suma;
+    public static int [] calcularFrecuenciaAbsolutaAcumulada(int[] frecuenciaAbsoluta) {
+        int [] acumulada = new int [frecuenciaAbsoluta.length];
+        int suma = 0;
+        for (int i = 0; i < frecuenciaAbsoluta.length; i ++) {
+            suma = suma + frecuenciaAbsoluta[i];
+            acumulada[i] = suma;
+        }
+        return acumulada;
     }
-    return acumulada;
-  }
 
-public static boolean validarOpciones(double[] opciones){
+    public static boolean validarOpciones(double[] opciones){
         for(double num : opciones){
             if(num % 1 !=0){
                 return false;
@@ -286,4 +283,4 @@ public static boolean validarOpciones(double[] opciones){
         }
         return true;
     }
-  }
+}

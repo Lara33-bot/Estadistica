@@ -88,7 +88,11 @@ public class Main {
             }
             if(opciones[i]==8){
                 int[] frecuenciaAbsoluta = (int[]) resultado[1];
-                    calcularFrecuenciaRelativa(datos, numerosSinRepetir, frecuenciaAbsoluta);
+                    double[] frecuenciaRelativa = calcularFrecuenciaRelativa(datos, frecuenciaAbsoluta );
+                    System.out.println("Frecuencia relativa:");
+                    for (int j = 0; j < frecuenciaRelativa.length; j++) {
+                        System.out.println(numerosSinRepetir[j] + "  --->  " + frecuenciaRelativa[j]);
+                    }
             }
             if(opciones[i]==9){
                  int[] frecuenciaAbsoluta = (int[]) resultado[1];

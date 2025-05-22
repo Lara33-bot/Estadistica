@@ -95,7 +95,12 @@ public class Main {
                 }
                 if (opciones[i] == 9) {
                     int[] frecuenciaAbsoluta = (int[]) resultado[1];
-                    calcularFrecuenciaRelativa(datos, numerosSinRepetir, frecuenciaAbsoluta);
+                    double[] frecuenciaRelativa = calcularFrecuenciaRelativa(datos, frecuenciaAbsoluta);
+                    double[] frecuenciaRelativaAcumulada = calcularFrecuenciaRelativaAcumulada(frecuenciaRelativa);
+
+                   System.out.println("Frecuencia relativa acumulada:");
+                     for (int j = 0; j < frecuenciaRelativaAcumulada.length; j++) {
+                     System.out.println(numerosSinRepetir[j] + "   (FrecuenciaRelativa)---> " + frecuenciaRelativa[j] + "     (FrecuenciaRelativaAcumulada)---> " + frecuenciaRelativaAcumulada[j]);
                 }
                 if (opciones[i] == 10) {
                     int[] frecuenciaAbsoluta = (int[]) resultado[1];
@@ -259,6 +264,16 @@ public class Main {
             System.out.println(numerosSinRepetir[i] + "  ---> " + relativa);
         }
     }
+            public static double [] calcularFrecuenciaRelativaAcumulada(double [] frecuenciarelativa) {
+                double sumr = 0;
+                double [] acumuladar = new double [frecuenciarelativa.length];
+             for (int i = 0; i < frecuenciarelativa.length; i ++)
+             {
+                 sumr = sumr + frecuenciarelativa[i];
+                 acumuladar[i] = sumr;
+             }
+             return acumuladar;
+            }
 
     public static int [] calcularFrecuenciaAbsolutaAcumulada(int[] frecuenciaAbsoluta) {
         int [] acumulada = new int [frecuenciaAbsoluta.length];

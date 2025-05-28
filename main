@@ -38,7 +38,8 @@ public class Main {
                             "9 --> Calcular frecuencia relativa acumulada\n" +
                             "10 --> Calcular frecuencia absoluta acumulada\n" +
                             "11 --> Calcular frecuencia porcentual\n" +
-                            "12 --> Calcular frecuencia porcentual acumulada\n"
+                            "12 --> Calcular frecuencia porcentual acumulada\n" +
+                            "13 --> Calcular cuartiles\n"
                     );
             input = new Scanner(System.in);
             double[] opciones = new double[0];
@@ -137,6 +138,13 @@ public class Main {
                     }
                     System.out.println();
                 }
+                 if (opciones[i] == 13) {
+                    double[] cuartiles = calcularCuartil(datos);
+                    System.out.println("Q1: " + cuartiles[0]);
+                    System.out.println("Q2 (Mediana): " + cuartiles[1]);
+                    System.out.println("Q3: " + cuartiles[2]);
+                    }
+                    System.out.println();
             }
 
 
@@ -342,6 +350,27 @@ public class Main {
             }
         }
         return frPorcentualAcu;
+    }
+    public static double [] calcularCuartil (double datos[]) {
+        double[] cuartiles = new double[3];
+        double deci = 0;
+        Arrays.sort(datos);
+        for (int i = 0; i < 3; i++) {
+            int cantidad = i + 1;   //para que no sea 0
+            double posicion = (cantidad * (datos.length - 1)) / 4.0;    //Posicion
+            int cuartEntera = (int) posicion;   //convierte a entero
+
+            if (posicion != cuartEntera) {    //decimal = interpolacion
+                deci = posicion - cuartEntera;
+                double datoprimero = datos[cuartEntera];
+                double datosegundo =  datos[cuartEntera + 1];
+                cuartiles[i] = datoprimero + deci * (datosegundo - datoprimero);
+            }
+            else {
+                cuartiles[i] = datos[cuartEntera];
+            }
+        }
+        return cuartiles;
     }
 }
          

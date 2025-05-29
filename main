@@ -28,6 +28,7 @@ public class Main {
                             "1 --> Calcular media\n" +
                             "2 --> Calcular mediana\n" +
                             "3 --> Calcular moda\n" +
+                            "4 --> Calcular cuartiles\n" +
                             "---MEDIDAS DE DISPERSION---\n" +
                             "4 --> Calcular rango\n" +
                             "5 --> Calcular varianza\n" +
@@ -38,8 +39,8 @@ public class Main {
                             "9 --> Calcular frecuencia relativa acumulada\n" +
                             "10 --> Calcular frecuencia absoluta acumulada\n" +
                             "11 --> Calcular frecuencia porcentual\n" +
-                            "12 --> Calcular frecuencia porcentual acumulada\n" +
-                            "13 --> Calcular cuartiles\n"
+                            "12 --> Calcular frecuencia porcentual acumulada\n" 
+                            
                     );
             input = new Scanner(System.in);
             double[] opciones = new double[0];
@@ -71,24 +72,30 @@ public class Main {
                     System.out.println();
                 }
                 if (opciones[i] == 4) {
+                    double[] cuartiles = calcularCuartil(datos);
+                    System.out.println("Q1: " + cuartiles[0]);
+                    System.out.println("Q2 (Mediana): " + cuartiles[1]);
+                    System.out.println("Q3: " + cuartiles[2]);
+                }
+                if (opciones[i] == 5) {
                     double rango = calcularRango(datos);
                     System.out.println("El rango es: " + rango);
                     System.out.println();
                 }
-                if (opciones[i] == 5) {
+                if (opciones[i] == 6) {
                     double[] varianzas = calcularVarianzas(datos);
                     System.out.println("  (Varianza Poblacional)---> " + varianzas[0]);
                     System.out.println("  (Varianza Muestral)---> " + varianzas[1]);
                     System.out.println();
                 }
-                if (opciones[i] == 6) {
+                if (opciones[i] == 7) {
                     double[] desviaciones = calcularDesviaciones(datos);
                     System.out.println("    (Desviación estándar poblacional)---> " + desviaciones[0]);
                     System.out.println("    (Desviación estándar muestral)---> " + desviaciones[1]);
                     System.out.println();
                 }
 
-                if (opciones[i] == 7) {
+                if (opciones[i] == 8) {
                     int[] frecuenciaAbsoluta = (int[]) resultado[1];
                     System.out.println("Frecuencia absoluta:");
                     for (int j = 0; j < frecuenciaAbsoluta.length; j++) {
@@ -96,14 +103,14 @@ public class Main {
                     }
                     System.out.println();
                 }
-                if (opciones[i] == 8) {
+                if (opciones[i] == 9) {
                     double[] frecuenciaRelativa = calcularFrecuenciaRelativa(datos,resultado);
                     for(int l = 0; l<frecuenciaRelativa.length; l++){
                         System.out.println(numerosSinRepetir[l]+"--(Fr.Relativa)--> "+frecuenciaRelativa[l]);
                     }
                     System.out.println();
                 }
-                if (opciones[i] == 9) {
+                if (opciones[i] == 10) {
                     double[] frecuenciaRelativa = calcularFrecuenciaRelativa(datos, resultado);
                     double[] frecuenciaRelativaAcumulada = calcularFrecuenciaRelativaAcumulada(frecuenciaRelativa);
 
@@ -114,7 +121,7 @@ public class Main {
                     }
                     System.out.println();
                 }
-                if (opciones[i] == 10) {
+                if (opciones[i] == 11) {
                     int[] frecuenciaAbsoluta = (int[]) resultado[1];
                     int[] frecuenciaAcumulada = calcularFrecuenciaAbsolutaAcumulada(frecuenciaAbsoluta);
                     for (int j = 0; j < frecuenciaAcumulada.length; j++) {
@@ -122,7 +129,7 @@ public class Main {
                     }
                     System.out.println();
                 }
-                if (opciones[i] == 11) {
+                if (opciones[i] == 12) {
                     double[] frecuenciaPorcentual = calcularFrecuenciaPorcentual(datos, resultado);
                     int[] frecuenciaAbsoluta = (int[]) resultado[1];
                     for(int q =0;q<frecuenciaPorcentual.length;q++){
@@ -130,7 +137,7 @@ public class Main {
                     }
                     System.out.println();
                 }
-                if (opciones[i] == 12) {
+                if (opciones[i] == 13) {
                     double[] frPorcentualAcumulada = calcularFrecuenciaPorcentualAcumulada(datos, resultado);
                     int[] frecuenciaAbsoluta = (int[]) resultado[1];
                     for(int y =0;y<frPorcentualAcumulada.length;y++){
@@ -138,13 +145,8 @@ public class Main {
                     }
                     System.out.println();
                 }
-                 if (opciones[i] == 13) {
-                    double[] cuartiles = calcularCuartil(datos);
-                    System.out.println("Q1: " + cuartiles[0]);
-                    System.out.println("Q2 (Mediana): " + cuartiles[1]);
-                    System.out.println("Q3: " + cuartiles[2]);
-                    }
-                    System.out.println();
+                
+                System.out.println();
             }
 
 
@@ -323,7 +325,7 @@ public class Main {
                 return false;
             }
             else{
-                if(num < 1 || num >12){
+                if(num < 1 || num >13){
                     return false;
                 }
             }
@@ -357,22 +359,28 @@ public class Main {
         Arrays.sort(datos);
         for (int i = 0; i < 3; i++) {
             int cantidad = i + 1;   //para que no sea 0
-            double posicion = (cantidad * (datos.length - 1)) / 4.0;    //Posicion
+            double posicion = (cantidad * (datos.length + 1)) / 4.0;    //Posicion
             int cuartEntera = (int) posicion;   //convierte a entero
+            deci = posicion - cuartEntera;
 
-            if (posicion != cuartEntera) {    //decimal = interpolacion
-                deci = posicion - cuartEntera;
-                double datoprimero = datos[cuartEntera];
-                double datosegundo =  datos[cuartEntera + 1];
-                cuartiles[i] = datoprimero + deci * (datosegundo - datoprimero);
+            if (cantidad == 2 && datos.length % 2 == 0) { // Caso especial para la mediana cuando n es par
+                cuartiles[i] = (datos[datos.length / 2 - 1] + datos[datos.length / 2]) / 2.0;
+            } else {
+                if (cuartEntera + 1 < datos.length) {
+                    double datoprimero = datos[cuartEntera];
+                    double datosegundo = datos[cuartEntera + 1];
+                    cuartiles[i] = datoprimero + deci * (datosegundo - datoprimero);
+                }
+                else {
+                    cuartiles[i] = datos[datos.length - 1];
+                }
             }
-            else {
-                cuartiles[i] = datos[cuartEntera];
-            }
+
         }
         return cuartiles;
     }
 }
+
          
 
 

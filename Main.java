@@ -1,7 +1,7 @@
 import java.util.*;
 
 
-public class Main {//REFACTORIZACIÓN DEL CÓDIGO DE ESTADÍSTICA
+public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         boolean rept = true;
